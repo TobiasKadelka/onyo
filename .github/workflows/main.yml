@@ -23,6 +23,10 @@ jobs:
     - name: Install dependencies
       run: |
         pip install .
+        pip install flake8
+    - name: flake8 linting
+      run: |
+        flake8 $(git ls-files onyo/*.py onyo/commands/*.py tests/*.py)
     - name: Test with pytest
       run: |
         pytest tests/default_tests.py
