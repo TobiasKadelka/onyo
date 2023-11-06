@@ -437,7 +437,10 @@ def onyo_mv(inventory: Inventory,
             inventory.rename_directory(sources[0], destination)
 
     if inventory.operations_pending():
-        ui.print('The following will be moved:')
+        if subject == "mv":
+            ui.print('The following will be moved:')
+        else:
+            ui.print('The following will be renamed:')
         for line in inventory.diff():
             ui.print(line)
         if ui.request_user_response("Save changes? No discards all changes. (y/n) "):
